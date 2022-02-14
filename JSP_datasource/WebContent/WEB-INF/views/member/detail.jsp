@@ -94,8 +94,8 @@
 			          		</div>
 		          		
 			          		<div class="col-sm-3 text-center">
-			          			<button type="button" onclick="location.href='remove.do?id=${member.id}';" 
-			          			id="deleteBtn" class="btn btn-danger" >삭 제</button>
+<%-- 			          			<button type="button" onclick="location.href='remove.do?id=${member.id}';" id="deleteBtn" class="btn btn-danger" >삭 제</button> --%>
+			          			<button type="button" onclick="deleteMember('${member.id}')" id="deleteBtn" class="btn btn-danger" >삭 제</button>
 			          		</div>
 		          			
 			          		<div class="col-sm-3 text-center">
@@ -122,7 +122,15 @@
   </div>
   <!-- /.content-wrapper -->
   
-  
+<script>
+	function deleteMember(mem_id) {
+		var aa = confirm("정말 삭제 하시겠습니까?")
+		
+		if (aa) {
+			location.href='remove.do?id='+mem_id
+		}
+	}
+</script>
 <!-- jQuery -->
 <script src="<%=request.getContextPath() %>/resources/bootstrap/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
