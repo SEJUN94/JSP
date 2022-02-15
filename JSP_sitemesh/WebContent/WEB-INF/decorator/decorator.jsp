@@ -15,8 +15,7 @@
 
 	decorator.jsp <br/>
 	header.jsp : message : ${message }
-	
-<hr/>
+	<hr/>
 
 <decorator:body />
 
