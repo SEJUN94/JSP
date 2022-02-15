@@ -12,6 +12,6 @@
 </head>
 <body>
 	main.jsp <br/>
-	header.jsp : message : ${message }
+	header.jsp : message : ${message }<hr/>
 </body>
 <%-- <jsp:include page="./footer.jsp" /> --%>
