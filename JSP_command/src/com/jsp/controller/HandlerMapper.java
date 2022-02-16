@@ -34,7 +34,11 @@ public class HandlerMapper {
 			commandMap.put(command, commandAction);
 			System.out.println("[HandlerMapper]" + command + ":" + commandAction + " 가 준비되었습니다.");
 		}
+	}
 	
+	public Action getAction(String url) {
+		Action action = commandMap.get(url);
+		return action;
 	}
 	
 }
