@@ -144,9 +144,9 @@
 <script src="<%=request.getContextPath() %>/resources/bootstrap/dist/js/adminlte.min.js"></script>
 
 <script>
-	function detail_go(member_id){
+	function OpenWindow(member_id){
 		//alert(member_id);
-		window.open('detail?id='+member_id,'800','700','');
+		window.open(member_id,'800','700','');
 	}
 </script>
 </body>
