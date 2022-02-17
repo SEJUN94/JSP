@@ -110,7 +110,7 @@
 		          		<%-- </c:if> --%>
 		          	
 			          		<div class="col-sm-3 text-center">
-			            		<button type="button" id="listBtn" onclick="CloseWindow();" class="btn btn-primary pull-right">닫 기</button>
+			            		<button type="button" id="listBtn" onclick="window.close();" class="btn btn-primary pull-right">닫 기</button>
 			            	</div>
 		          	    </div>  	
 		          </div>
@@ -129,6 +129,8 @@
 			location.href='remove.do?id='+mem_id
 		}
 	}
+	
+
 </script>
 <!-- jQuery -->
 <script src="<%=request.getContextPath() %>/resources/bootstrap/plugins/jquery/jquery.min.js"></script>
