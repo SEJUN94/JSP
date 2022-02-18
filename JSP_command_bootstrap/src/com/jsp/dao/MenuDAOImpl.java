@@ -26,11 +26,10 @@ public class MenuDAOImpl implements MenuDAO {
 		MenuVO menu = session.selectOne("Menu-Mapper.selectMenuByMcode",mCode);
 		return menu;
 	}
-
+	
 	@Override
 	public MenuVO selectMenuByMname(SqlSession session, String mName) throws SQLException {
 		MenuVO menu = session.selectOne("Menu-Mapper.selectMenuByMname",mName);
 		return menu;
 	}
-
 }

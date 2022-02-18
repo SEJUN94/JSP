@@ -9,70 +9,75 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.jsp.dao.MenuDAO;
 import com.jsp.dto.MenuVO;
 
-public class MenuServiceImpl implements MenuService {
-	private SqlSessionFactory sqlSessionFactory; // = new OracleMyBatisSqlSessionFactory()
-	
-	public void setSqlSessionFactiory(SqlSessionFactory sqlSessionFactory) {
+public class MenuServiceImpl implements MenuService{
+
+	private SqlSessionFactory sqlSessionFactory;// = new OracleMyBatisSqlSessionFactory();
+
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
 		this.sqlSessionFactory = sqlSessionFactory;
-	
 	}
 	
-	private MenuDAO menuDAO; // = new MenuDAOImpl();
-	
+	private MenuDAO menuDAO;// = new MenuDAOImpl();
+
 	public void setMenuDAO(MenuDAO menuDAO) {
 		this.menuDAO = menuDAO;
 	}
-
+	
 	@Override
 	public List<MenuVO> getMainMenuList() throws SQLException {
+
 		List<MenuVO> menuList = null;
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			menuList = menuDAO.selectMainMenu(session);
-		}finally {
+		} finally {
 			session.close();
 		}
+
 		return menuList;
 	}
-	
+
 	@Override
-	public List<MenuVO> getSubMenuList(String mCode) throws SQLException{
+	public List<MenuVO> getSubMenuList(String mCode) throws SQLException {
+
 		List<MenuVO> menuList = null;
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			menuList = menuDAO.selectSubMenu(session, mCode);
-		}finally {
+		} finally {
 			session.close();
 		}
+
 		return menuList;
 	}
-	
-	
+
 	@Override
-	public MenuVO getMenuByMcode(String mCode) throws SQLException{
+	public MenuVO getMenuByMcode(String mCode) throws SQLException {
 		MenuVO menu = null;
-		
+
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			menu = menuDAO.selectMenuByMcode(session, mCode);
-		}finally {
+		} finally {
 			session.close();
 		}
+
 		return menu;
 	}
 
 	@Override
-	public MenuVO getMenuByMname(String mName) throws SQLException{
+	public MenuVO getMenuByMname(String mName) throws SQLException {
 		MenuVO menu = null;
-		
+
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			menu = menuDAO.selectMenuByMcode(session, mName);
-		}finally {
+			menu = menuDAO.selectMenuByMname(session, mName);
+		} finally {
 			session.close();
 		}
+
 		return menu;
 	}
-
-
+	
+	
 }

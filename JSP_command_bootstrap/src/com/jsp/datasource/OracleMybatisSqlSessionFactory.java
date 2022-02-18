@@ -13,7 +13,7 @@ import org.apache.ibatis.session.TransactionIsolationLevel;
 
 public class OracleMybatisSqlSessionFactory implements SqlSessionFactory{
 
-private SqlSessionFactory sqlSessionFactory;
+	private SqlSessionFactory sqlSessionFactory;
 	
 	{
 		String config = "com/jsp/mybatis/config/sqlConfig.xml";
@@ -31,59 +31,49 @@ private SqlSessionFactory sqlSessionFactory;
 		}
 	}
 	
-	
-	
+
 	@Override
-	public Configuration getConfiguration() {
-		// TODO Auto-generated method stub
+	public Configuration getConfiguration() {		
 		return sqlSessionFactory.getConfiguration();
 	}
 
 	@Override
 	public SqlSession openSession() {
-		// TODO Auto-generated method stub
 		return sqlSessionFactory.openSession(true);
 	}
 
 	@Override
-	public SqlSession openSession(boolean arg0) {
-		// TODO Auto-generated method stub
+	public SqlSession openSession(boolean arg0) {		
 		return sqlSessionFactory.openSession(arg0);
 	}
 
 	@Override
-	public SqlSession openSession(Connection arg0) {
-		// TODO Auto-generated method stub
+	public SqlSession openSession(Connection arg0) {		
 		return sqlSessionFactory.openSession(arg0);
 	}
 
 	@Override
 	public SqlSession openSession(TransactionIsolationLevel arg0) {
-		// TODO Auto-generated method stub
 		return sqlSessionFactory.openSession(arg0);
 	}
 
 	@Override
 	public SqlSession openSession(ExecutorType arg0) {
-		// TODO Auto-generated method stub
 		return sqlSessionFactory.openSession(arg0);
 	}
 
 	@Override
-	public SqlSession openSession(ExecutorType arg0, boolean arg1) {
-		// TODO Auto-generated method stub
+	public SqlSession openSession(ExecutorType arg0, boolean arg1) {	
 		return sqlSessionFactory.openSession(arg0, arg1);
 	}
 
 	@Override
-	public SqlSession openSession(ExecutorType arg0, TransactionIsolationLevel arg1) {
-		// TODO Auto-generated method stub
+	public SqlSession openSession(ExecutorType arg0, TransactionIsolationLevel arg1) {		
 		return sqlSessionFactory.openSession(arg0, arg1);
 	}
 
 	@Override
-	public SqlSession openSession(ExecutorType arg0, Connection arg1) {
-		// TODO Auto-generated method stub
+	public SqlSession openSession(ExecutorType arg0, Connection arg1) {		
 		return sqlSessionFactory.openSession(arg0, arg1);
 	}
 
