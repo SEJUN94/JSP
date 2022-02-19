@@ -126,7 +126,7 @@
 		var aa = confirm("정말 삭제 하시겠습니까?")
 		
 		if (aa) {
-			location.href='remove.do?id='+mem_id
+			location.href='delete?id='+mem_id
 		}
 	}
 	
