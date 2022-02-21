@@ -19,7 +19,7 @@ public class IndexPageAction implements Action {
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String url = "WEB-INF/views/common/indexPage.jsp";
+		String url = "common/indexPage";
 		
 		try {
 			List<MenuVO> menuList = menuService.getMainMenuList();
