@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jsp.action.Action;
 import com.jsp.controller.HandlerMapper;
 
 public class DispatcherServlet extends HttpServlet {
@@ -34,13 +35,49 @@ public class DispatcherServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		requestPro(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		requestPro(request, response);
 	}
-
+	
+	private void requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 사용자 URI 검출
+		String command = request.getRequestURI(); // contextPath 포함.
+		if(command.indexOf(request.getContextPath()) == 0){
+			command = command.substring(request.getContextPath().length());
+		}	
+		
+		// commandHandler 실행(HandlerMapper 의뢰 action 할당)
+		Action action = null;
+		String view = null;
+		
+		if(handlerMapper != null) {
+			action = handlerMapper.getAction(command);
+			if(action!=null) { // 올바른 요청
+				try {
+					view = action.process(request, response);
+					
+					if (view == null) {
+						return;
+					}
+					
+					request.setAttribute("viewName", view);
+					JSPViewResolver.veiw(request, response);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+					response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+				}
+				
+			}else {
+				response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			}
+		}else {
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		}
+	}
 }

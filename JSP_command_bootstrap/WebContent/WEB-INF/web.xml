@@ -12,6 +12,16 @@
 		</listener-class>
 	</listener>
 	
+		<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<servlet>
 		<servlet-name>DispatcherServlet</servlet-name>
 		<servlet-class>com.jsp.controller.DispatcherServlet</servlet-class>
