@@ -1,0 +1,16 @@
+
+<beans>
+	<!-- dataSource -->
+	<bean id="sqlSessionFactory" 
+	      class="com.jsp.datasource.OracleMybatisSqlSessionFactory" />
+	      
+	<!-- Repository Layer -->      
+	<bean id = "menuDAO"  class="com.jsp.dao.MenuDAOImpl" />	
+	
+	
+	<!-- Service layer -->
+	<bean id="menuService" class="com.jsp.service.MenuServiceImpl">		
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="menuDAO" ref-value="menuDAO" />
+	</bean>
+</beans>
