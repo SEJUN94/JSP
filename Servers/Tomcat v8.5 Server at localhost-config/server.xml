@@ -152,11 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-<<<<<<< HEAD
-      <Context docBase="JSP_command_bootstrap" path="/JSP_command_bootstrap" reloadable="true" source="org.eclipse.jst.jee.server:JSP_command_bootstrap"/><Context docBase="JSP_datasource" path="/JSP_datasource" reloadable="true" source="org.eclipse.jst.jee.server:JSP_datasource"/></Host>
-=======
-      <Context docBase="JSP_datasource" path="/JSP_datasource" reloadable="true" source="org.eclipse.jst.jee.server:JSP_datasource"/></Host>
->>>>>>> branch 'master' of https://github.com/SEJUN94/JSP.git
+      <Context docBase="JSP_command_bootstrap" path="/JSP_command_bootstrap" reloadable="true" source="org.eclipse.jst.jee.server:JSP_command_bootstrap"/></Host>
     </Engine>
   </Service>
 </Server>
