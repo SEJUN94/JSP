@@ -7,5 +7,12 @@
 
 
 <body>
-	<h1>indexPage.jsp</h1>
+	
+	<iframe name="ifr" src="" frameborder="0" style="width:100%;height:85vh;"></iframe>
+	
+	<script>
+		function goPage(url,mComde){
+			$('iframe[name="ifr"]').attr("src",url);
+		}
+	</script>
 </body>
