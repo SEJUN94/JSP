@@ -21,26 +21,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/dist/css/adminlte.min.css">
 	
-	<style>
-		body { background:#292e33;}
-	</style>
 	
 <decorator:head />
 
 </head>
 <body>
 
-<div class="wrapper">
-<%@ include file="/WEB-INF/include/header.jsp" %>
-
-<%@ include file="/WEB-INF/include/aside.jsp" %>
 	
-	<div class="content-wrapper"> <!-- 왼쪽마진띄어줌 -->
 		<decorator:body />
-	</div>
 	
-<%@ include file="/WEB-INF/include/footer.jsp" %>
-</div>
 
 <!-- jQuery -->
 <script src="<%=request.getContextPath() %>/resources/bootstrap/plugins/jquery/jquery.min.js"></script>
@@ -49,16 +38,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="<%=request.getContextPath() %>/resources/bootstrap/dist/js/adminlte.min.js"></script>
 
-
-<script>
-	$('div.wrapper').css({
-		"max-width":"1280px",
-		"min-width":"800px",
-		"margin":"0 auto"
-	});
-		
-</script>
+<script src="<%=request.getContextPath() %>/resources/js/common.js"></script>
 </body>
+
+
 </html>
 
 

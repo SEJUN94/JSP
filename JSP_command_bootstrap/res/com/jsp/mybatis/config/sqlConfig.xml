@@ -12,6 +12,7 @@
 		<typeAlias type="java.lang.Integer" alias="int" />
 		
 		<typeAlias type="com.jsp.dto.MenuVO" alias="menu" />
+		<typeAlias type="com.jsp.dto.MemberVO" alias="member" />
 	</typeAliases>
 	
 	<environments default="development">
@@ -32,6 +33,7 @@
 	
 	<mappers>
 		<mapper resource="com/jsp/mybatis/mappers/Menu-Mapper.xml"/>
+		<mapper resource="com/jsp/mybatis/mappers/Member-Mapper.xml"/>
 	</mappers>
 	
 </configuration>
