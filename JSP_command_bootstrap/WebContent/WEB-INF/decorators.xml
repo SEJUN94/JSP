@@ -3,12 +3,12 @@
 <decorators defaultdir="/WEB-INF/decorator">
 
 	<decorator name="main" page="main_decorator.jsp">
-		<pattern>/*.do</pattern>
+		<pattern>*.do</pattern>
 	</decorator>
 	
-	<decoration name="openWindow" page="open_decorator.jsp">
-		<pattern>*/**/*.do</pattern>
+	<decorator name="openWindow" page="open_decorator.jsp">
+		<pattern>/**/*.do</pattern>
 		<pattern>/main.do</pattern>
-	</decoration>
+	</decorator>
 	
 </decorators>
