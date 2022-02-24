@@ -1,6 +1,7 @@
 package com.jsp.listener;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -24,6 +25,7 @@ public class TestMenuServiceImpl {
 		
 		listener.contextInitialized(beanConfigXml);
 		
+		//ApplicationContext(=container)에서 서비스 가져옴
 		menuService = (MenuService)ApplicationContext.getApplicationContext().get("menuService");
 	}
 	
@@ -32,7 +34,6 @@ public class TestMenuServiceImpl {
 		List<MenuVO> menuList = menuService.getMainMenuList();
 		
 		Assert.assertEquals(5, menuList.size());
-		
 	}
 	
 	@After
