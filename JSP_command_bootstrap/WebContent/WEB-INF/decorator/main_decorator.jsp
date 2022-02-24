@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <!--
@@ -11,37 +13,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title><decorator:title default="kim's system" /></title>
-
-  <!-- Google Font: Source Sans Pro -->
+ <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/dist/css/adminlte.min.css">
-	
-	<style>
-		body { background:#292e33;}
-	</style>
-	
-<decorator:head />
-
+  <style>
+  	body {
+  		background:#292e33;
+  	}
+  </style>
+<decorator:head/>
 </head>
+
+
+
 <body>
-
 <div class="wrapper">
-<%@ include file="/WEB-INF/include/header.jsp" %>
-
-<%@ include file="/WEB-INF/include/aside.jsp" %>
+	<%@ include file="/WEB-INF/include/header.jsp" %>
 	
-	<div class="content-wrapper"> <!-- 왼쪽마진띄어줌 -->
-		<decorator:body />
-	</div>
+	<%@ include file="/WEB-INF/include/aside.jsp" %>
 	
-<%@ include file="/WEB-INF/include/footer.jsp" %>
+	  <div class="content-wrapper">
+		<decorator:body/>
+	  </div>
+	  
+	<%@ include file="/WEB-INF/include/footer.jsp" %>
 </div>
-
 <!-- jQuery -->
 <script src="<%=request.getContextPath() %>/resources/bootstrap/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -49,17 +48,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="<%=request.getContextPath() %>/resources/bootstrap/dist/js/adminlte.min.js"></script>
 
-
 <script>
-	$('div.wrapper').css({
-		"max-width":"1280px",
-		"min-width":"800px",
-		"margin":"0 auto"
-	});
-		
+$('div.wrapper').css({
+	"min-width":"1280px",
+	"margin":"0 auto"
+});
+
+$('div.wrapper').css({
+	"max-width":"1280px",
+	"margin":"0 auto"
+});
 </script>
+
 </body>
 </html>
-
-
-

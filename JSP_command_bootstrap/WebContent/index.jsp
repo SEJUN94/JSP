@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-
-
 <script>
-	location.href="/index.do";
+	location.href="index.do";
 </script>

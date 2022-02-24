@@ -12,51 +12,34 @@ import com.jsp.service.MenuService;
 
 public class SubMenuAction implements Action {
 	
-	
 	private MenuService menuService;
 	public void setMenuService(MenuService menuService) {
 		this.menuService = menuService;
 	}
 	
 	@Override
-	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	//mCode값 받아서 
+	public String process(HttpServletRequest requeset, HttpServletResponse response) throws Exception {
+
 		String url = null;
 		
-		String mCode = request.getParameter("mCode");
+		//mCode 받기
+		String mCode = requeset.getParameter("mCode");
+		//해당메뉴에다가 subMenuList => exception 발생한 곳에서 처리
 		List<MenuVO> subMenu = null;
 		
 		try {
 			subMenu = menuService.getSubMenuList(mCode);
 			
 			JSONViewResolver.view(response, subMenu);
-
-			//subMenu 내보내기.
-//			ObjectMapper mapper = new ObjectMapper();
-//			String json = mapper.writeValueAsString(subMenu);
 			
-			// content Type 결정
-//			response.setContentType("application/json;charset=utf-8");
-//			PrintWriter out = response.getWriter();
-			
-//			out.print(json);
-			
-//			out.close();
-			
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
-			// Exception 처리......
-			throw e;	
+			// Exception 처리....
+			throw e;
 		}
-			
+		
 		return url;
 	}
 
 }
-
-
-
-
-
-
-
-

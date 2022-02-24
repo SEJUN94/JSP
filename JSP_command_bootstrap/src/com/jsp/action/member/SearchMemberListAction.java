@@ -1,23 +1,21 @@
 package com.jsp.action.member;
 
-import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jsp.action.Action;
 import com.jsp.command.Criteria;
-import com.jsp.dto.MemberVO;
-import com.jsp.service.MemberService;
+import com.jsp.service.SearchMemberService;
 
-public class MemberListAction implements Action {
+public class SearchMemberListAction implements Action {
 
-	private MemberService memberService;
-
-	public void setMemberService(MemberService memberService) {
-		this.memberService = memberService;
+	private SearchMemberService searchMemberService;
+	public void setSearchMemberService(SearchMemberService searchMemberService) {
+		this.searchMemberService = searchMemberService;
 	}
-
+	
 	@Override
 	public String process(HttpServletRequest requeset, HttpServletResponse response) throws Exception {
 
@@ -41,14 +39,11 @@ public class MemberListAction implements Action {
 			return null; // 이름이 없기때문에 서블릿이 아무것도 하지 않음
 		}
 		
-		
-
 		requeset.setAttribute("cri", cri);
 		
 		try {
-			
-			List<MemberVO> memberList = memberService.getMemberList(cri);
-			requeset.setAttribute("memberList", memberList);
+			Map<String,Object>dataMap = searchMemberService.getSearchMemberList(cri);
+			requeset.setAttribute("dataMap", dataMap);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

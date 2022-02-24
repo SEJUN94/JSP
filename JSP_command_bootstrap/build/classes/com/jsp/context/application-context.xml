@@ -1,22 +1,31 @@
-
 <beans>
+	
+<!--<bean>클래스를 지칭
+		<property ></property>setMethod를 지칭
+	</bean> -->
+	
 	<!-- dataSource -->
-	<bean id="sqlSessionFactory" 
-	      class="com.jsp.datasource.OracleMybatisSqlSessionFactory" />
-	      
-	<!-- Repository Layer -->      
-	<bean id = "menuDAO"  class="com.jsp.dao.MenuDAOImpl" />	
-	<bean id = "memberDAO"  class="com.jsp.dao.MemberDAOImpl" />	
+	<bean id="sqlSessionFactory"
+		  class="com.jsp.datasource.OracleMybatisSqlSessionFactory"/>
 	
-	
+	<!-- Repository Layer -->
+	<bean id="menuDAO" class="com.jsp.dao.MenuDAOImpl"/>
+	<bean id="memberDAO" class="com.jsp.dao.MemberDAOImpl"/>
+
 	<!-- Service layer -->
 	<bean id="menuService" class="com.jsp.service.MenuServiceImpl">
-		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
-		<property name="menuDAO" ref-value="menuDAO" />
-	</bean>
-	<!-- Service layer -->
-	<bean id="memberService" class="com.jsp.service.MemberServiceImpl">		
-		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
-		<property name="memberDAO" ref-value="memberDAO" />
-	</bean>
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
+		<property name="menuDAO" ref-value="menuDAO"/>
+	</bean>	
+
+	<bean id="memberService" class="com.jsp.service.MemberServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
+		<property name="memberDAO" ref-value="memberDAO"/>
+	</bean>	
+
+	<bean id="searchMemberService" class="com.jsp.service.SearchMemberServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
+		<property name="memberDAO" ref-value="memberDAO"/>
+	</bean>	
+
 </beans>

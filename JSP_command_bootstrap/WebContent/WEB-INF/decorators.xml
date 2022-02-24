@@ -6,9 +6,9 @@
 		<pattern>*.do</pattern>
 	</decorator>
 	
-	<decorator name="openWindow" page="open_decorator.jsp">
+ 	<decorator name="openWindow" page="open_decorator.jsp">
 		<pattern>/**/*.do</pattern>
 		<pattern>/main.do</pattern>
-	</decorator>
-	
+	</decorator> 
+
 </decorators>

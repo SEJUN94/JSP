@@ -6,7 +6,6 @@
 <configuration>
 	<properties resource="com/jsp/properties/jdbc.properties" />
 	
-					
 	<typeAliases>
 		<typeAlias type="java.lang.String" alias="str" />
 		<typeAlias type="java.lang.Integer" alias="int" />

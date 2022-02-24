@@ -3,6 +3,11 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="pageMaker" value="${dataMap.pageMaker }" />
+<c:set var="cri" value="${dataMap.pageMaker.cri }" />
+<c:set var="memberList" value="${dataMap.memberList }" />
+
 <title>회원목록</title>
 
 <head></head>
@@ -43,23 +48,23 @@
    					 	<!-- sort num -->
 					  	<select class="form-control col-md-3" name="perPageNum" 
 					  			id="perPageNum" onchange="list_go(1);">					  		  		
-					  		<option value="10" >정렬개수</option>
-					  		<option value="2" >2개씩</option>
-					  		<option value="3" >3개씩</option>
-					  		<option value="5" >5개씩</option>
+					  		<option value="10" ${cri.perPageNum eq 10 ? 'seleected':''}>정렬개수</option>
+					  		<option value="2"  ${cri.perPageNum eq 2 ? 'seleected':''}>2개씩</option>
+					  		<option value="3"  ${cri.perPageNum eq 3 ? 'seleected':''}>3개씩</option>
+					  		<option value="5"  ${cri.perPageNum eq 5 ? 'seleected':''}>5개씩</option>
 					  	</select>
 					  	
 					  	<!-- search bar -->
 					 	<select class="form-control col-md-3" name="searchType" id="searchType">
-					 		<option value="" >검색구분</option>
-							<option value="i" >아이디</option>
-							<option value="n" >이 름</option>
-							<option value="p" >전화번호</option>
-							<option value="e" >이메일</option>					 									
+					 		<option value=""  ${cri.searchType eq ''?'selected':''}>검색구분</option>
+							<option value="i" ${cri.searchType eq 'i'?'selected':''} >아이디</option>
+							<option value="n" ${cri.searchType eq 'n'?'selected':''} >이 름</option>
+							<option value="p" ${cri.searchType eq 'p'?'selected':''} >전화번호</option>
+							<option value="e" ${cri.searchType eq 'e'?'selected':''} >이메일</option>					 									
 						</select>
 						<!-- keyword -->
    					 	<input  class="form-control" type="text" name="keyword" 
-										placeholder="검색어를 입력하세요." value="${pageMaker.cri.keyword }"/>
+										placeholder="검색어를 입력하세요." value="${cri.keyword }"/>
 						<span class="input-group-append">
 							<button class="btn btn-primary" type="button" 
 									id="searchBtn" data-card-widget="search" onclick="list_go(1);">
@@ -70,7 +75,7 @@
    					 </div>
    				</div>   			
    			</div>
-   			<div class="card-body" style="text-align:center;">
+   			<div class="card-body" style="text-align:center;height:76vh;">
     		  <div class="row">
 	             <div class="col-sm-12">	
 		    		<table class="table table-bordered">
@@ -98,11 +103,10 @@
 				              		<td>${member.pwd }</td>
 				              		<td>${member.name }
 				              		<td>${member.email }</td>
-									  <td>${member.phone.replace('-','') }</td> <!-- jsp2.3버전부터 가능 web모듈이 3.0이기 때문에 사용가능 -->
-									  <%-- <td>${member.regDate }</td> --%>
-									  <td>
-										  <fmt:formatDate value="${member.regDate }" pattern="yyyy-MM-dd" />
-									  </td> 
+		            		  	   	<td>${member.phone.replace('-','')  }</td>
+		            		  	   	<td>
+			              				<fmt:formatDate value="${member.regDate }" pattern="yyyy-MM-dd"/>
+			              			</td>
 		            		  	  </tr>
 		            		</c:forEach>
 		            	</c:if>
@@ -112,11 +116,18 @@
     		</div> <!-- card-body -->
     		<div class="card-footer">
     			<!-- pagination -->
+    			<%@ include file="/WEB-INF/views/common/pagination.jsp" %>
     		</div>
 	     </div>
    	</section>
   </div>
   
-  
 
 </body>
+
+
+
+
+
+
+
