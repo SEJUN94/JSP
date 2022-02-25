@@ -19,12 +19,12 @@ public class SubMenuAction implements Action {
 	
 	@Override
 	//mCode값 받아서 
-	public String process(HttpServletRequest requeset, HttpServletResponse response) throws Exception {
+	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		String url = null;
 		
 		//mCode 받기
-		String mCode = requeset.getParameter("mCode");
+		String mCode = request.getParameter("mCode");
 		//해당메뉴에다가 subMenuList => exception 발생한 곳에서 처리
 		List<MenuVO> subMenu = null;
 		

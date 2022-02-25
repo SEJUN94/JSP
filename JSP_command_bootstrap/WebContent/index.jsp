@@ -3,5 +3,9 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <script>
-	location.href="index.do";
+	if('${loginUser.name}'){
+		location.href="index.do";
+	}else{
+		location.href="common/loginForm.do";
+	}
 </script>

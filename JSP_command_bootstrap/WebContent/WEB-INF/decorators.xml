@@ -10,5 +10,9 @@
 		<pattern>/**/*.do</pattern>
 		<pattern>/main.do</pattern>
 	</decorator> 
+	
+	<excludes>
+		<pattern>/resources/*</pattern>
+	</excludes>
 
 </decorators>
