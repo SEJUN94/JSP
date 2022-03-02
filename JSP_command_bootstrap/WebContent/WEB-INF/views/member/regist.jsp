@@ -164,8 +164,7 @@ var formData = "";
 	   var form = $('form[role="imageForm"]');
 	   var picture = form.find('[name=pictureFile]')[0];
 		   
-	   //formData = new FormData($('form[role="imageForm"]')[0]);
-	   formData = new FormData(form[0]);
+	   formData = new FormData($('form[role="imageForm"]')[0]);
 	   
 	   //이미지 확장자 jpg 확인
 	   var fileFormat = picture.value.substr(picture.value.lastIndexOf(".")+1).toUpperCase();
@@ -194,7 +193,6 @@ var formData = "";
 			reader.onload = function (e) {
 				 $('div#pictureView').css({'background-image':'url('+e.target.result+')',
 	                 'background-position':'center',
-		     //'background-size':'contain',
 	                 'background-size':'cover',
 	                 'background-repeat':'no-repeat'
 	                 });
@@ -237,6 +235,71 @@ var formData = "";
 	   });
 	}
 
+	var checkedID ="";
+	function idCheck_go(){
+		//alert("id check btn click");
+		
+		var input_ID=$('input[name="id"]');
+		
+		if(!input_ID.val()){
+	       alert("아이디를 입력하시오");
+	       input_ID.focus();
+	       return;
+		}
+		
+		 $.ajax({
+			 url : "idCheck.do?id="+input_ID.val().trim(),
+	    	 method : "get",	
+	    	 success : function(result){
+	   		   if(result.toUpperCase() == "DUPLICATED"){
+	              alert("중복된 아이디 입니다.");
+	              $('input[name="id"]').focus();
+	           }else{
+	              alert("사용가능한 아이디 입니다.");
+	              checkedID=input_ID.val().trim();
+	              $('input[name="id"]').val(input_ID.val().trim());
+	             
+	           } 
+	    	 },
+	         error:function(error){
+	           alert("시스템장애로 가입이 불가합니다.");
+	         }			 
+		 });
+	}
+	
+	function regist_go(){
+		//alert("regist btn click");
+		
+	  var uploadCheck = $('input[name="checkUpload"]').val();   
+	   if(uploadCheck=="0"){
+	      alert("사진업로드는 필수 입니다");      
+	      return;
+	   }
+	   
+	   if(!$('input[name="id"]').val()){
+	      alert("아이디는 필수입니다.");
+	       return;
+	   }
+	   
+	   if($('input[name="id"]').val()!=checkedID){
+	      alert("아이디는 중복 확인이 필요합니다.");
+	      return;
+	   }
+	   
+	   if(!$('input[name="pwd"]').val()){
+		      alert("패스워드는 필수입니다.");
+		      return;
+	   }
+		   
+	   if(!$('input[name="name"]').val()){
+	      alert("이름은 필수입니다.");
+	      return;
+	   }
+	   
+	   var form = $('form[role="form"]');
+	   form.submit();
+	   
+	}
 </script>
 
 </body>
