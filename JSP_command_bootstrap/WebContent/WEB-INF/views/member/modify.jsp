@@ -35,16 +35,16 @@
 			<div class="card-body">	
 				<div class="row">					
 					<input type="hidden" name="oldPicture"  value=""/>
-					<input type="file" id="inputFile" onchange="" name="picture" style="display:none" />
+					<input type="file" id="inputFile" onchange="changePicture_go();" name="picture" style="display:none" />
 					<div class="input-group col-md-12">
 						<div class="col-md-12" style="text-align: center;">
-							<div class="manPicture" data-id="${member.id } id="pictureView" style="border: 1px solid green; height: 200px; width: 140px; margin: 0 auto; margin-bottom:5px;"></div>														
+							<div class="manPicture" data-id="${member.id }" id="pictureView" style="border: 1px solid green; height: 200px; width: 140px; margin: 0 auto; margin-bottom:5px;"></div>														
 							<div class="input-group input-group-sm">
 								<label for="inputFile" class=" btn btn-warning btn-sm btn-flat input-group-addon">사진변경</label>
 								<input id="inputFileName" class="form-control" type="text" name="tempPicture" disabled
 									value="${member.picture }"/>
 								<input id="picture" class="form-control" type="hidden" name="uploadPicture" />
-							</div>						
+							</div>					
 						</div>												
 					</div>
 				</div>	
@@ -119,6 +119,56 @@
 		MemberPictureThumb('<%=request.getContextPath()%>');
 	}
 </script>
+
+<script>
+	function changePicture_go(){
+		//alert("file change");
+		
+		var picture = $('input#inputFile')[0];
+		
+		var fileFormat = picture.value.substr(picture.value.lastIndexOf(".")+1).toUpperCase();
+		
+		//이미지 확장자 jpg 확인
+		if(!(fileFormat=="JPG" || fileFormat=="JPEG" || fileFormat=="GIF")){
+			alert("이미지는 jpg 형식만 가능합니다.");
+			return;
+		}
+		//이미지 파일 용량 체크
+		if(picture.files[0].size>1024*1024*2){
+			alert("사진 용량은 2MB 이하만 가능합니다.");
+			return;
+		};
+		
+		document.getElementById('inputFileName').value=picture.files[0].name;
+		
+		if(picture.files && picture.files[0]) {
+			var reader = new FileReader();
+			
+			reader.onload = function(e) {
+				//이미지 미리보기
+				$('div#pictureView')
+				.css({'background-image':'url('+e.target.result+')',
+					  'background-position':'center',
+					  'background-size':'cover',
+					  'background-repeat':'no-repeat'
+					  });
+			}
+			
+			reader.readAsDataURL(picture.files[0]);
+		}
+		
+		//이미지 변경 확인
+		$('input[name="uploadPicture"]').val(picture.files[0].name);
+	}
+	
+	function modify_go(){
+		//alert("modify btn click");
+		var form=$('form[role="form"]');
+		form.submit();
+	}
+	
+</script>
+
 
 
 </body> 

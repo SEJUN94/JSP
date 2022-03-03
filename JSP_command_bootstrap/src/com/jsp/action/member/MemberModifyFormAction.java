@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jsp.action.Action;
 import com.jsp.dto.MemberVO;
 import com.jsp.service.MemberService;
+import com.jsp.util.MakeFileName;
 
 public class MemberModifyFormAction implements Action {
 	
@@ -21,6 +22,11 @@ public class MemberModifyFormAction implements Action {
 		try {
 			String id = request.getParameter("id");
 			MemberVO member = memberService.getMember(id);
+			
+			String originalFileName = MakeFileName.parseFileNameFromUUID(member.getPicture(), "\\$\\$");
+			
+			member.setPicture(originalFileName);
+			
 			request.setAttribute("member", member);
 		}catch(Exception e) {
 			e.printStackTrace();

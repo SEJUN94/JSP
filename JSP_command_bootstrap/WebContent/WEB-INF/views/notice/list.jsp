@@ -8,7 +8,7 @@
 <c:set var="cri" value="${dataMap.pageMaker.cri }" />
 <c:set var="memberList" value="${dataMap.memberList }" />
 
-<title>회원목록</title>
+<title>공지목록</title>
 
 <head></head>
 
@@ -19,13 +19,13 @@
 	  	<div class="container-fluid">
 	  		<div class="row md-2">
 	  			<div class="col-sm-6">
-	  				<h1>회원목록</h1>  				
+	  				<h1>공지목록</h1>  				
 	  			</div>
 	  			<div class="col-sm-6">
 	  				<ol class="breadcrumb float-sm-right">
 			        <li class="breadcrumb-item">
 			        	<a href="list.do">
-				        	<i class="fa fa-dashboard"></i>회원관리
+				        	<i class="fa fa-dashboard"></i>공지관리
 				        </a>
 			        </li>
 			        <li class="breadcrumb-item active">
