@@ -19,9 +19,16 @@ public class MemberDetailAction implements Action {
 		String url = "member/detail";
 		
 		String id = request.getParameter("id");
+		String from = request.getParameter("from");
 		
 		try {
 			MemberVO member = memberService.getMember(id);
+			
+			if(from!=null && from.equals("list")) {
+				//request.setAttribute("from", "true"); 위아래 둘다 상관없음
+				request.setAttribute("from", true);
+			}
+			
 			request.setAttribute("member", member);
 			}catch(Exception e) {
 				e.printStackTrace();

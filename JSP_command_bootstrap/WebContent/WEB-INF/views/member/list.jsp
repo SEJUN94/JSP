@@ -98,7 +98,7 @@
 		            	</c:if>
 		            	<c:if test="${!empty memberList }" >
 		            		<c:forEach items="${memberList }" var="member">
-		            			  <tr  onclick="OpenWindow('detail.do?id=${member.id}','','800','900');" 
+		            			  <tr  onclick="OpenWindow('detail.do?from=list&id=${member.id}','','800','900');" 
 		            		  	   style="cursor:pointer;">
 		            		  	    <td style="padding:5px;">
 		            		  	    	<span class="manPicture" data-id="${member.id }" style="display:block; width:40px; height:40px; margin:0 auto;"></span>
