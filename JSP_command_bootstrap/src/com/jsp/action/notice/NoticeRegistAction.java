@@ -25,6 +25,8 @@ public class NoticeRegistAction implements Action {
 		
 		NoticeVO notice = (NoticeVO)XSSHttpRequestParameterAdapter.execute(request, NoticeVO.class,true);
 		
+		notice.setContent(request.getParameter("content"));
+		
 		/*
 		NoticeVO notice = (NoticeVO)HttpRequestParameterAdapter.execute(request, NoticeVO.class);
 		

@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
+<head>
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/plugins/summernote/summernote-bs4.min.css">
+</head>
 
-<head></head>
+<title>공지 수정</title>
 
-<title>상세 보기</title>
 
 <body>
 	<!-- Main content -->
@@ -40,7 +43,7 @@
 								onclick="modifyPOST_go();">수 정</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-warning" id="cancelBtn"
-								onclick="CloseWindow();">취 소</button>
+								onclick="history.go(-1);">취 소</button>
 						</div>
 					</div>
 					<!--end card-header  -->
@@ -60,7 +63,7 @@
 							<div class="form-group">
 								<label for="content">내 용</label>
 								<textarea class="textarea" name="content" id="content" rows="20"
-									cols="90" placeholder="1000자 내외로 작성하세요.">${notice.content } </textarea>
+									cols="90" placeholder="1000자 내외로 작성하세요.">${fn:escapeXml(notice.content) } </textarea>
 							</div>
 						</form>
 					</div>
@@ -77,16 +80,21 @@
 	<!-- /.content -->
 
 	<script>
-		function modifyPOST_go(){
-			//alert("modify btn click");
-			$('form[role="modifyForm"]').submit();
-		}
-/* 		function modify_go(){
+    window.onload=function(){
+    	summernote_go($('textarea[name="content"]'),'<%=request.getContextPath()%>');
+    }
+	
+	
+	function modifyPOST_go(){
+		//alert("modify btn click");
+		$('form[role="modifyForm"]').submit();
+	}
+/* 	function modify_go(){
 			
-			var form=$('form[role="form"]');
+		var form=$('form[role="form"]');
 			
-			form.submit();
-		} */
+		form.submit();
+	} */
 	</script>
 </body>
 

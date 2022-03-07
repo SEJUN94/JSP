@@ -12,6 +12,8 @@
 	<bean id="menuDAO" class="com.jsp.dao.MenuDAOImpl"/>
 	<bean id="memberDAO" class="com.jsp.dao.MemberDAOImpl"/>
 	<bean id="noticeDAO" class="com.jsp.dao.NoticeDAOImpl" />
+	<bean id="boardDAO" class="com.jsp.dao.BoardDAOImpl" />
+	<bean id="replyDAO" class="com.jsp.dao.ReplyDAOImpl" />
 
 	<!-- Service layer -->
 	<bean id="menuService" class="com.jsp.service.MenuServiceImpl">
@@ -38,5 +40,16 @@
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
 		<property name="noticeDAO" ref-value="noticeDAO" />
 	</bean>
+	
+	<bean id="boardService" class="com.jsp.service.BoardServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
+		<property name="boardDAO" ref-value="boardDAO" />
+		<property name="replyDAO" ref-value="replyDAO" />
+	</bean>
 
+	<bean id="replyService" class="com.jsp.service.ReplyServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
+		<property name="replyDAO" ref-value="replyDAO" />
+		<property name="memberDAO" ref-value="memberDAO"/>
+	</bean>
 </beans>

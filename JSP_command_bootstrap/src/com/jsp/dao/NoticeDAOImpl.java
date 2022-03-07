@@ -1,7 +1,9 @@
 package com.jsp.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -14,12 +16,18 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Override
 	public List<NoticeVO> selectSearchNoticeList(SqlSession session, Criteria cri) throws SQLException {
 		
-		int offset=cri.getStartRowNum();
-		int limit=cri.getPerPageNum();		
-		RowBounds rowBounds=new RowBounds(offset,limit);		
+		int startRow=cri.getStartRowNum();
+		int endRow=cri.getPerPageNum();		
+
+		Map<String, Object> dataParam = new HashMap<String,Object>();
+		dataParam.put("startRow", startRow);
+		dataParam.put("endRow",endRow);
+		dataParam.put("searchType",cri.getSearchType());
+		dataParam.put("keyword",cri.getKeyword());
+	
 		
 		List<NoticeVO> noticeList=
-				session.selectList("Notice-Mapper.selectSearchNoticeList",cri,rowBounds);
+				session.selectList("Notice-Mapper.selectSearchNoticeList",dataParam);
 		
 		return noticeList;
 	}
