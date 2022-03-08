@@ -19,6 +19,10 @@ public class ReplyVO {
 	public void setRno(int rno) {
 		this.rno = rno;
 	}
+	
+	public void setRno(String rno) {
+		this.rno = Integer.parseInt(rno);
+	}
 
 	public int getBno() {
 		return bno;

@@ -1,55 +1,52 @@
+
 <beans>
-	
-<!--<bean>클래스를 지칭
-		<property ></property>setMethod를 지칭
-	</bean> -->
-	
 	<!-- dataSource -->
-	<bean id="sqlSessionFactory"
-		  class="com.jsp.datasource.OracleMybatisSqlSessionFactory"/>
+	<bean id="sqlSessionFactory" 
+	      class="com.jsp.datasource.OracleMybatisSqlSessionFactory" />
+	      
+	<!-- Repository Layer -->      
+	<bean id = "menuDAO"  class="com.jsp.dao.MenuDAOImpl" />	
+	<bean id = "memberDAO" class="com.jsp.dao.MemberDAOImpl" />	
+	<bean id = "noticeDAO" class="com.jsp.dao.NoticeDAOImpl" />
+	<bean id = "boardDAO" class="com.jsp.dao.BoardDAOImpl" />
+	<bean id = "replyDAO" class="com.jsp.dao.ReplyDAOImpl" />
 	
-	<!-- Repository Layer -->
-	<bean id="menuDAO" class="com.jsp.dao.MenuDAOImpl"/>
-	<bean id="memberDAO" class="com.jsp.dao.MemberDAOImpl"/>
-	<bean id="noticeDAO" class="com.jsp.dao.NoticeDAOImpl" />
-	<bean id="boardDAO" class="com.jsp.dao.BoardDAOImpl" />
-	<bean id="replyDAO" class="com.jsp.dao.ReplyDAOImpl" />
-
 	<!-- Service layer -->
-	<bean id="menuService" class="com.jsp.service.MenuServiceImpl">
-		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
-		<property name="menuDAO" ref-value="menuDAO"/>
+	<bean id="replyService" class="com.jsp.service.ReplyServiceImpl" >
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="replyDAO" ref-value="replyDAO" />
+		<property name="memberDAO" ref-value="memberDAO" />
 	</bean>	
-
-	<bean id="memberService" class="com.jsp.service.MemberServiceImpl">
-		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
-		<property name="memberDAO" ref-value="memberDAO"/>
-	</bean>	
-
-	<bean id="searchMemberService" class="com.jsp.service.SearchMemberServiceImpl">
-		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
-		<property name="memberDAO" ref-value="memberDAO"/>
-	</bean>	
-
-	<bean id="loginSearchMemberService" class="com.jsp.service.LoginSearchMemberServiceImpl">
-		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
-		<property name="memberDAO" ref-value="memberDAO"/>
-	</bean>	
-	
-	<bean id="noticeService" class="com.jsp.service.NoticeServiceImpl">
-		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
+	<bean id="boardService" class="com.jsp.service.BoardServiceImpl" >
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="boardDAO" ref-value="boardDAO" />	
+		<property name="replyDAO" ref-value="replyDAO" />	
+	</bean>
+	<bean id="noticeService" class="com.jsp.service.NoticeServiceImpl" >
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
 		<property name="noticeDAO" ref-value="noticeDAO" />
 	</bean>
+	<bean id="menuService" class="com.jsp.service.MenuServiceImpl">		
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="menuDAO" ref-value="menuDAO" />
+	</bean>
+	<bean id="memberService" class="com.jsp.service.MemberServiceImpl" >
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="memberDAO" ref-value="memberDAO" />
+	</bean>
 	
-	<bean id="boardService" class="com.jsp.service.BoardServiceImpl">
-		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
-		<property name="boardDAO" ref-value="boardDAO" />
-		<property name="replyDAO" ref-value="replyDAO" />
+	<bean id="searchMemberService" class="com.jsp.service.SearchMemberServiceImpl" >
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="memberDAO" ref-value="memberDAO" />
 	</bean>
-
-	<bean id="replyService" class="com.jsp.service.ReplyServiceImpl">
-		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
-		<property name="replyDAO" ref-value="replyDAO" />
-		<property name="memberDAO" ref-value="memberDAO"/>
+	
+	<bean id="loginSearchMemberService" class="com.jsp.service.LoginSearchMemberServiceImpl" >
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="memberDAO" ref-value="memberDAO" />
 	</bean>
+	
 </beans>
+
+
+
+

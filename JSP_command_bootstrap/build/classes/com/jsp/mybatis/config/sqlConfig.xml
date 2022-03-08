@@ -6,15 +6,17 @@
 <configuration>
 	<properties resource="com/jsp/properties/jdbc.properties" />
 	
+					
 	<typeAliases>
 		<typeAlias type="java.lang.String" alias="str" />
 		<typeAlias type="java.lang.Integer" alias="int" />
 		
 		<typeAlias type="com.jsp.dto.MenuVO" alias="menu" />
-		<typeAlias type="com.jsp.dto.MemberVO" alias="member" />
+		<typeAlias type="com.jsp.dto.MemberVO"  alias="member"/>	
 		<typeAlias type="com.jsp.dto.NoticeVO" alias="notice" />
 		<typeAlias type="com.jsp.dto.BoardVO" alias="board" />
 		<typeAlias type="com.jsp.dto.ReplyVO" alias="reply" />
+		
 	</typeAliases>
 	
 	<environments default="development">
@@ -42,3 +44,11 @@
 	</mappers>
 	
 </configuration>
+
+
+
+
+
+
+
+

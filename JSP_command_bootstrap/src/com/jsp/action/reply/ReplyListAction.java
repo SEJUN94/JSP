@@ -14,6 +14,7 @@ import com.jsp.service.ReplyService;
 
 public class ReplyListAction implements Action {
 
+
 	private ReplyService replyService;
 	public void setReplyService(ReplyService replyService) {
 		this.replyService = replyService;
@@ -21,12 +22,13 @@ public class ReplyListAction implements Action {
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String url = null;
+		String url=null;
 		
 		int bno = Integer.parseInt(request.getParameter("bno"));
-		
-		CriteriaCommand criCMD =
-				(CriteriaCommand) HttpRequestParameterAdapter.execute(request, CriteriaCommand.class);
+
+		CriteriaCommand criCMD = 
+			   (CriteriaCommand) HttpRequestParameterAdapter.execute(request,
+				CriteriaCommand.class);
 		Criteria cri = criCMD.toCriteria();
 		
 		Map<String, Object> dataMap = replyService.getReplyList(bno, cri);
@@ -37,3 +39,7 @@ public class ReplyListAction implements Action {
 	}
 
 }
+
+
+
+
