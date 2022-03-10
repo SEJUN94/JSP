@@ -7,19 +7,31 @@ import com.jsp.command.Criteria;
 import com.jsp.dto.PdsVO;
 
 public interface PdsService {
-	// 목록조회	
-	Map<String,Object> getPdsList(Criteria cri)throws SQLException;
 	
-	// 상세보기
-	PdsVO getPds(int pno)throws SQLException;	
-	PdsVO getPdsForModify(int pno)throws SQLException;
-		
-	// 등록
-	void regist(PdsVO pds)throws SQLException;
-		
-	// 수정
-	void modify(PdsVO pds)throws SQLException;
+
+	// 리스트조회
+	Map<String, Object> getList(Criteria cri) throws SQLException;
+
+	// 글조회
+	PdsVO getPds(int pno) throws SQLException;
+
+	// 글작성
+	void regist(PdsVO pds) throws SQLException;
+
+	// 글수정
+	void modify(PdsVO pds) throws SQLException;
+
+	// 글삭제
+	void remove(int pno) throws SQLException;
+
+	// 글읽기(조회수증가)
+	PdsVO read(int pno) throws SQLException;
 	
-	// 삭제
-	void remove(int pno)throws SQLException;
+	
+	//첨부파일 조회
+	//AttachVO getAttachByAno(int ano)throws SQLException;
+	
+	//파일정보 삭제
+	//void removeAttachByAno(int ano)throws SQLException;
+
 }

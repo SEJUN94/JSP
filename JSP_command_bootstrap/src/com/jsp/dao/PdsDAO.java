@@ -9,21 +9,20 @@ import com.jsp.command.Criteria;
 import com.jsp.dto.PdsVO;
 
 public interface PdsDAO {
-	List<PdsVO> selectPdsCriteria(SqlSession session,Criteria cri) throws SQLException;
+	
 
+	List<PdsVO> selectPdsCriteria(SqlSession session,Criteria cri)	throws SQLException;
 	int selectPdsCriteriaTotalCount(SqlSession session,Criteria cri) throws SQLException;
-
-	PdsVO selectPdsByPno(SqlSession session,int pno) throws SQLException;
-
-	void insertPds(SqlSession session,PdsVO pds) throws SQLException;
-
-	void updatePds(SqlSession session,PdsVO pds) throws SQLException;
-
-	void deletePds(SqlSession session,int pno) throws SQLException;
-
-	// viewcnt 증가
-	void increaseViewCnt(SqlSession session,int pno) throws SQLException;
-
-	// pds_seq.nextval 가져오기
-	int selectPdsSeqNext(SqlSession session) throws SQLException;
+	
+	PdsVO selectPdsByPno(SqlSession session,int pno)throws SQLException;
+	
+	void insertPds(SqlSession session,PdsVO pds)throws SQLException;
+	void updatePds(SqlSession session,PdsVO pds)throws SQLException;
+	void deletePds(SqlSession session,int pno)throws SQLException;
+	
+	//viewcnt  증가
+	void increaseViewCnt(SqlSession session,int pno)throws SQLException;
+	
+	//pds_seq.nextval 가져오기
+	int getSeqNextValue(SqlSession session) throws SQLException;
 }

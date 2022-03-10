@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<head></head>
-
-<title></title>
 
 
-<body>
-	<h1>PDS Main Page...</h1>
-</body>
+<script>
+	alert("정상적으로 삭제되었습니다.");
+	window.opener.location.reload(true);
+	window.close();
+</script>

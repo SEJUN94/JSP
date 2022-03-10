@@ -1,7 +1,9 @@
 package com.jsp.action.pds;
 
+import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,34 +14,34 @@ import com.jsp.controller.XSSHttpRequestParameterAdapter;
 import com.jsp.service.PdsService;
 
 public class PdsListAction implements Action {
-	
+
 	private PdsService pdsService;
+
 	public void setPdsService(PdsService pdsService) {
 		this.pdsService = pdsService;
 	}
-	
+
 	@Override
-	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String url = "pds/list";
-		
+	public String process(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		String url = "/pds/list";
+
 		try {
+			CriteriaCommand criCMD
+			// = (CriteriaCommand)HttpRequestParameterAdapter.execute(request,
+			// CriteriaCommand.class);
+					= (CriteriaCommand) XSSHttpRequestParameterAdapter.execute(request, CriteriaCommand.class, false);
 			
-			CriteriaCommand criCMD 
-			//= (CriteriaCommand)HttpRequestParameterAdapter.execute(request, CriteriaCommand.class);
-			= (CriteriaCommand)XSSHttpRequestParameterAdapter.execute(request, CriteriaCommand.class,false);
-			
-			Criteria cri = criCMD.toCriteria();	
-			
-			
-			Map<String, Object> dataMap = pdsService.getPdsList(cri);
+			Criteria cri = criCMD.toCriteria();
+
+			Map<String, Object> dataMap = pdsService.getList(cri);
 			request.setAttribute("dataMap", dataMap);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendError(response.SC_BAD_REQUEST);
+			response.sendError(response.SC_INTERNAL_SERVER_ERROR);
 			url = null;
+
 		}
-		
-		
 		return url;
 	}
 

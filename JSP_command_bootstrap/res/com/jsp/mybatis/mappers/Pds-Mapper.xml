@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Pds-Mapper">
-		
 	<sql id="search">
 		<if test="searchType == 't'.toString()">
 			and title like '%'||#{keyword}||'%'			
@@ -39,24 +38,25 @@
 			)			
 		</if>
 	</sql>
-	<select id="selectSearchPdsList"	resultType="pds">
+	
+	<select id="selectSearchPdsList" resultType="pds">
 		select
 		*
 		from
 		pds
 		where pno is not null  			  	
 		<include refid="search" />
-		order by regDate desc
+		order by pno desc
 	</select>
 	
-	<select id="selectSearchPdsListCount" resultType="int">
+	<select id="selectSearchPdsListCount"  resultType="int">
 		select
 		count(*)
 		from
 		pds
 		where pno is not null  			  	
 		<include refid="search" />
-		order by regdate desc
+		order by pno desc
 	</select>
 	
 	
@@ -76,15 +76,15 @@
 	
 	<update id="updatePds" parameterType="pds">
 		update 
-		pds 
+		pds
 		set 
 		title=#{title}, content=#{content}, updatedate=sysdate 
-		where bno=#{bno}
+		where pno=#{pno}
 	</update>
 	
 	<update id="deletePds" parameterType="int">
 		delete 
-		from pds
+		from pds 
 		where pno=#{pno}
 	</update>
 	
@@ -99,7 +99,6 @@
 	<select id="selectPdsSeqNext" resultType="int">
 		select pds_seq.nextval as pno from dual
 	</select>
-	
 </mapper>  
 
 

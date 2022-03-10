@@ -22,7 +22,7 @@ public class BoardModifyAction implements Action {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {		
-		String url = "redirect:/board/detail.do?from=modify&bno="+request.getParameter("bno");
+		String url = "redirect:board/detail.do?from=modify&bno="+request.getParameter("bno");
 		
 		try {
 		BoardModifyCommand modifyReq 

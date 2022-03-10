@@ -2,11 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<head></head>
 
-<title></title>
-
-
-<body>
-	<h1>PDS Main Page...</h1>
-</body>
+<script>
+	alert("수정이 완료되었습니다.");
+	location.href="detail.do?pno=${pds.pno}&from=modify"
+</script>
