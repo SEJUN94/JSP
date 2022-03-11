@@ -1,5 +1,7 @@
 package com.jsp.dto;
 
+import java.util.Date;
+
 public class AttachVO {
 	
 	private int ano;			//고유번호
@@ -8,7 +10,9 @@ public class AttachVO {
 	private String fileType;	//파일형식
 	private int pno;			//자료실 글번호
 	private String attacher;	//등록자
-	private String regDate;		//등록일
+	private Date regDate;		//등록일
+	
+	
 	public int getAno() {
 		return ano;
 	}
@@ -45,14 +49,12 @@ public class AttachVO {
 	public void setAttacher(String attacher) {
 		this.attacher = attacher;
 	}
-	public String getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(String regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	
-	
 	
 	
 	

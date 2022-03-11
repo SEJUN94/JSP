@@ -6,6 +6,6 @@
 
 <script>
 	alert("정상적으로 삭제되었습니다.");
-	window.opener.location.reload(true);
 	window.close();
+	window.opener.location.reload(true);
 </script>

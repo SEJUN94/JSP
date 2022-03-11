@@ -86,7 +86,7 @@
 							<td>${pds.pno }</td>
 							<td id="boardTitle" style="text-align:left;max-width: 100px; overflow: hidden;
 										 white-space: nowrap; text-overflow: ellipsis;">
-								<a href="javascript:OpenWindow('detail.do?pno=${pds.pno }','상세보기',800,700);">
+								<a href="javascript:OpenWindow('detail.do?from=list&pno=${pds.pno }','상세보기',800,700);">
 									<span class="col-sm-12 ">${pds.title }</span>
 								</a>
 							</td>
