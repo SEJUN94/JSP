@@ -14,9 +14,6 @@ import com.jsp.command.Criteria;
 import com.jsp.dto.MemberVO;
 import com.jsp.service.SearchMemberService;
 
-
-
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:com/spring/context/root-context.xml")
 public class TestMemberServiceImpl {
