@@ -26,6 +26,8 @@ public class MemberServiceImpl implements LoginSearchMemberService{
 	public MemberVO getMember(String id) throws Exception {
 
 		MemberVO member = memberDAOBean.selectMemberById(id);
+		
+		//if(1==1) throw new Exception();
 		return member;
 	}
 

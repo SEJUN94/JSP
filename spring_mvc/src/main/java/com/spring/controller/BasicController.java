@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class TestController {
+public class BasicController {
 
 	//@GetMapping(value="/test")
 	//@PostMapping(value="/test")
