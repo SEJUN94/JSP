@@ -19,6 +19,10 @@
 		<constructor-arg value="${pds.upload}" />
 	</bean>
 	
+	<bean id="loginUserLogSavePath" class="java.lang.String">
+		<constructor-arg value="${login.user.log}" />
+	</bean>
+	
 	<!-- Repository -->
 	<bean id="menuDAO" class="com.jsp.dao.MenuDAOImpl" />
 	<bean id="memberDAO" class="com.jsp.dao.MemberDAOImpl" />
