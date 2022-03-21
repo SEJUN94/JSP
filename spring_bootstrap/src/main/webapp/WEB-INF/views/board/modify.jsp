@@ -73,7 +73,7 @@
      
     <script>
     	window.onload=function(){
-    		summernote_go($("#content"),<%=request.getContextPath()%>);
+    		summernote_go($("#content"),'<%=request.getContextPath()%>');
     	}
     	
     	function modify_go(){

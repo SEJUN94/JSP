@@ -14,13 +14,13 @@
 
 <body>
 
-	<c:if test="${from eq regist }">
+	<c:if test="${from eq 'regist'}" >
 		<script>
-			alert("공지사항 등록이 성공했습니다.");
-			window.opener.location.reload();
-			window.close();
-		</script>
-	</c:if>
+	    	alert("공지사항 등록이 성공했습니다.");
+	    	window.opener.location.reload();	
+	    	window.close();
+    	</script>
+    </c:if>
 	 <!-- Main content -->
 	<section class="content-header">
 	  	<div class="container-fluid">

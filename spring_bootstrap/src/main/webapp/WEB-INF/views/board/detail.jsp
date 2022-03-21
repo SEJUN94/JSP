@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/plugins/summernote/summernote-bs4.min.css">
 </head>
@@ -167,6 +168,14 @@ function remove_go(){
 	}
 }
 
+	<c:if test="${from eq 'modify' }">
+		alert("수정되었습니다.");
+	</c:if>
+	<c:if test="${from eq 'remove' }">
+		alert("삭제되었습니다.");
+		window.close();
+		window.opener.location.reload();
+	</c:if>
 </script>
 
 <%@ include file="./reply_js.jsp" %> 
