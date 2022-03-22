@@ -95,8 +95,8 @@
                </div>
                <div class="card-footer">
                   
-                     <button type="button" id="modifyBtn" class="btn btn-warning" onclick="modify_go('modifyForm.do', '${pds.pno}')">Modify</button>                  
-                      <button type="button" id="removeBtn" class="btn btn-danger" onclick="remove_go('remove.do','${pds.pno }')">REMOVE</button>
+                     <button type="button" id="modifyBtn" class="btn btn-warning" onclick="submit_go('modifyForm.do', '${pds.pno}')">Modify</button>                  
+                      <button type="button" id="removeBtn" class="btn btn-danger" onclick="submit_go('remove.do','${pds.pno }')">REMOVE</button>
                   
                    <button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">CLOSE </button>
                </div>                           
@@ -106,21 +106,24 @@
       
     </section>
 <script>
-function modify_go(url,pno){
+function submit_go(url,pno){
    location.href=url+"?pno="+pno;
 }
-function remove_go(url,pno){
-   location.href=url+"?pno="+pno;
-}
-<c:if test="${from eq 'modify' }">
-	alert("수정되었습니다.");
+</script>
+
+<c:if test=${from eq 'modify' }>
+	<script>
+		alert("수정되었습니다.");
+	</script>
 </c:if>
-<c:if test="${from eq 'remove'}">
-	alert("삭제되었습니다.");
-window.close();
-window.opener.location.reload();
+<c:if test=${from eq 'remove'}>
+	<script>
+		alert("삭제되었습니다.");
+		window.close();
+		window.opener.location.reload(true);
+	</script>
 </c:if>
 
-</script>
+
  
 </body>
