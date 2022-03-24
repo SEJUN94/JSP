@@ -17,7 +17,7 @@
 
 <head></head>
 
-<title>공지목록</title>
+<title>자유게시판목록</title>
 
 <body>
 	 <!-- Main content -->
@@ -31,7 +31,7 @@
 	  				<ol class="breadcrumb float-sm-right">
 			        <li class="breadcrumb-item">
 			        	<a href="list.do">
-				        	<i class="fa fa-dashboard"></i>공지사항
+				        	<i class="fa fa-dashboard"></i>자유게시판
 				        </a>
 			        </li>
 			        <li class="breadcrumb-item active">
@@ -47,7 +47,7 @@
     <section class="content">		
 		<div class="card">
 			<div class="card-header with-border">
-				<button type="button" class="btn btn-primary" id="registBtn" onclick="OpenWindow('registForm.do','글등록',800,700);">공지등록</button>				
+				<button type="button" class="btn btn-primary" id="registBtn" onclick="OpenWindow('registForm.do','글등록',800,700);">게시글등록</button>				
 				<div id="keyword" class="card-tools" style="width:450px;">
 					<div class="input-group row">
 						<select class="form-control col-md-3" name="perPageNum" id="perPageNum"
@@ -128,12 +128,20 @@
     </section>
     <!-- /.content -->
 
-	<c:if test="${from eq 'regist' }">
+	<c:if test="${from eq 'regist' }" >
 		<script>
 			alert("등록되었습니다.");
 			window.close();
-			window.opener.location.reload();
+			window.opener.location.reload();			
 		</script>
 	</c:if>
-
 </body>
+
+
+
+
+
+
+
+
+

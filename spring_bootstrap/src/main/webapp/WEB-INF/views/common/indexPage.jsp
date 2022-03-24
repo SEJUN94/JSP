@@ -68,7 +68,6 @@
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" ></script>
 	<script  type="text/x-handlebars-template"  id="subMenu-list-template">
-		
 		{{#each .}}
 			<li class="nav-item subMenu" >
     			<a href="javascript:goPage('<%=request.getContextPath()%>{{murl}}','{{mcode}}');" 
@@ -79,5 +78,13 @@
 			</li>
 		{{/each}}
 	</script>
-
+	
 </body>
+
+
+
+
+
+
+
+

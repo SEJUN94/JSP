@@ -22,10 +22,12 @@ public class XSSRequestInterceptor extends HandlerInterceptorAdapter {
 			String paramName = crossParamNames.nextElement();
 			String paramValue = request.getParameter(paramName);
 			
-			request.setAttribute("XSS"+paramName, HTMLInputFilter.htmlSpecialChars(paramValue));
+			request.setAttribute("XSS"+paramName, HTMLInputFilter.htmlSpecialChars(paramValue));				
+			
 		}
 		
 		return true;
 	}
-
+	
+	
 }

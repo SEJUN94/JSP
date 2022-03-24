@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -10,16 +10,11 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
- 
-     <c:if test="${not empty menuList }">
-         <c:forEach items="${menuList }" var="menu">
-          <li class="nav-item d-none d-sm-inline-block">
-            <a href="javascript:goPage('<%=request.getContextPath() %>${menu.murl }','${menu.mcode }');subMenu_go('${menu.mcode }');" class="nav-link">
-            	<i class="${menu.micon }"></i>${menu.mname }
-            </a>
-          </li>
-       </c:forEach>
-     </c:if>
+        <c:forEach items="${menuList }" var="menu">
+   	  	<li class="nav-item d-none d-sm-inline-block">
+        	<a href="javascript:goPage('<%=request.getContextPath() %>${menu.murl }','${menu.mcode }');subMenu_go('${menu.mcode}');" class="nav-link"><i class="${menu.micon}"></i>&nbsp;${menu.mname }</a>
+   	   	</li>
+      </c:forEach>      
     </ul>
 
     <!-- Right navbar links -->
@@ -143,3 +138,5 @@
       </li>
     </ul>
   </nav>
+
+</body>

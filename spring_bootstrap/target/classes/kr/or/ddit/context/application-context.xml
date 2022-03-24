@@ -6,27 +6,28 @@
 
 	<!-- summernote Image Path -->
 	<bean id="imgPath" class="java.lang.String">
-		<constructor-arg value="${summernote.img}" />
+		<constructor-arg value="${summernote.img}" />      
 	</bean>
 	
 	<!-- member.picture -->
 	<bean id="picturePath" class="java.lang.String">
-		<constructor-arg value="${member.picture.upload}" />
+		<constructor-arg value="${member.picture.upload}" />      
 	</bean>
 	
 	<!-- file upload -->
 	<bean id="fileUploadPath" class="java.lang.String">
-		<constructor-arg value="${pds.upload}" />
+		<constructor-arg value="${pds.upload}"/>
 	</bean>
 	
+	<!-- login user log path -->
 	<bean id="loginUserLogSavePath" class="java.lang.String">
 		<constructor-arg value="${login.user.log}" />
 	</bean>
 	
 	<bean id="errorLogPath" class="java.lang.String">
-		<constructor-arg value="${error.log}" />
-	</bean>
-	
+		<constructor-arg value="${error.log}" />	
+	</bean>	
+		
 	<!-- Repository -->
 	<bean id="menuDAO" class="com.jsp.dao.MenuDAOImpl" />
 	<bean id="memberDAO" class="com.jsp.dao.MemberDAOImpl" />

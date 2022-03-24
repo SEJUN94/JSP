@@ -62,14 +62,13 @@
 var replyPage=1;
 
 window.onload=function(){
-	getPage("<%=request.getContextPath()%>/replies/bno=${board.bno}/"+replyPage);
+	getPage("<%=request.getContextPath()%>/replies/${board.bno}/"+replyPage);
 	
 	$('ul.pagination').on('click','li a',function(event){		
 		//alert($(this).attr("href"));
 		replyPage=$(this).attr("href");
 		
 		getPage("<%=request.getContextPath()%>/replies/${board.bno}/"+replyPage);
-				+replyPage);
 		
 		return false;
 	});
@@ -153,8 +152,9 @@ function replyRegist_go(){
 			getPage("<%=request.getContextPath()%>/replies/"+bno+"/"+data); //리스트 출력
 			$('#newReplyText').val("");	
 		},
-		error:function(){
-			alert('댓글이 등록을 실패했습니다.');	
+		error:function(error){
+			//alert('댓글이 등록을 실패했습니다.');
+			 AjaxErrorSecurityRedirectHandler(error.status);		
 		}
 		
 	});
@@ -179,11 +179,11 @@ function replyModify_go(){
 	}
 	
 	$.ajax({
-		url:"<%=request.getContextPath()%>/replies/"rno,
+		url:"<%=request.getContextPath()%>/replies/"+rno,
 		type:"PUT",
 		data:JSON.stringify(sendData),
 		contentType:"application/json",
-		headers:{
+		headers:{			
 			"X-HTTP-Method-Override":"PUT"
 		},
 		success:function(result){
@@ -191,8 +191,9 @@ function replyModify_go(){
 			getPage("<%=request.getContextPath()%>/replies/${board.bno}/"
 					+replyPage);
 		},
-		error:function(){
-			alert('수정 실패했습니다.');	
+		error:function(error){
+			//alert('수정 실패했습니다.');
+			 AjaxErrorSecurityRedirectHandler(error.status);		
 		},
 		complete:function(){
 			$('#modifyModal').modal('hide');
@@ -208,9 +209,9 @@ function replyRemove_go(){
 	var rno=$('.modal-title').text();
 	
 	$.ajax({
-		url:"<%=request.getContextPath()%>/replies/${board.bno}/"+rno+"/"+replyPage,
+		url:"<%=request.getContextPath()%>/replies/${board.bno}/"+ rno +"/"+replyPage,
 		type:"DELETE",
-		headers:{
+		headers:{			
 			"X-HTTP-Method-Override":"DELETE"
 		},
 		success:function(page){
@@ -219,7 +220,8 @@ function replyRemove_go(){
 			replyPage=page;
 		},
 		error:function(error){
-			alert('삭제 실패했습니다.');		
+			//alert('삭제 실패했습니다.');
+			 AjaxErrorSecurityRedirectHandler(error.status);		
 		},
 		complete:function(){
 			$('#modifyModal').modal('hide');

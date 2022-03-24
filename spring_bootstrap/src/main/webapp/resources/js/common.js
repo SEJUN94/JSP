@@ -13,9 +13,10 @@ function OpenWindow(UrlStr, WinTitle, WinWidth, WinHeight) {
 //팝업창 닫기
 function CloseWindow(){
 	
-	window.opener.location.reload(true);
+	window.opener.location.reload(true);		
 	window.close();
 }
+
 
 
 //사용자 사진 출력
@@ -29,7 +30,6 @@ function MemberPictureThumb(contextPath){
 		 target.style.backgroundSize="cover";
 	}
 }
-
 
 //summernote
 var contextPath = "";
@@ -87,11 +87,13 @@ function sendFile(file, el) {
     		//alert(img_url);
       		$(el).summernote('editor.insertImage', img_url);
     	},
-    	error:function(){
-    		alert(file.name+" 업로드에 실패했습니다.");
+    	error:function(error){
+    		//alert(file.name+" 업로드에 실패했습니다.");
+    		 AjaxErrorSecurityRedirectHandler(error.status);		
     	}
   	});
 }
+
 
 function deleteFile(src) {		
 	var splitSrc= src.split("=");
@@ -107,20 +109,31 @@ function deleteFile(src) {
 		success:function(res){
 			console.log(res);
 		},
-		error:function(){
-			alert("이미지 삭제가 불가합니다.");
+		error:function(error){
+			//alert("이미지 삭제가 불가합니다.");
+			 AjaxErrorSecurityRedirectHandler(error.status);		
 		}
 	});
  }
 
+//spring_security redirect loginForm
+function AjaxErrorSecurityRedirectHandler(status) {
+	if (status == "302") {
+		alert("세션이 만료되었습니다.\n로그인 하세요.");
+		location.reload();
 
-//사용자 사진 넣기
-//function MemberPictureThumb1(targetObj, id, contextPath){ //(대상, 사용자 아이디)
-//	if(!contextPath) contextPath="";
-//	
-//	targetObj.style.backgroundImage="url('"+contextPath+"/member/getPicture.do?id+"')";
-//	targetObj.style.backgroundPosition="center";
-//	targetObj.style.backgroundRepeat="no-repeat";
-//	targetObj.style.backgroundSize="cover"; 			
-//
-//}
+	}else if(status == "403"){
+		alert("권한이 유효하지 않습니다.");
+		history.go(-1);		
+	}else {
+		alert("시스템장애로 실행이 불가합니다.");
+		history.go(-1);
+	}
+
+}
+
+
+
+
+
+

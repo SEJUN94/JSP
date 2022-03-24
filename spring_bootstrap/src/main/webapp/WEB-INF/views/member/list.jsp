@@ -48,19 +48,19 @@
    					 	<!-- sort num -->
 					  	<select class="form-control col-md-3" name="perPageNum" 
 					  			id="perPageNum" onchange="list_go(1);">					  		  		
-					  		<option value="10" ${cri.perPageNum eq 10? 'selected':''}>정렬개수</option>
-					  		<option value="2"  ${cri.perPageNum eq 2 ? 'selected':''}>2개씩</option>
-					  		<option value="3"  ${cri.perPageNum eq 3 ? 'selected':''}>3개씩</option>
-					  		<option value="5"  ${cri.perPageNum eq 5 ? 'selected':''}>5개씩</option>
+					  		<option value="10" ${cri.perPageNum eq 10 ? 'selected' : '' } >정렬개수</option>
+					  		<option value="2" ${cri.perPageNum eq 2 ? 'selected' : '' }>2개씩</option>
+					  		<option value="3" ${cri.perPageNum eq 3 ? 'selected' : '' }>3개씩</option>
+					  		<option value="5" ${cri.perPageNum eq 5 ? 'selected' : '' }>5개씩</option>
 					  	</select>
 					  	
 					  	<!-- search bar -->
 					 	<select class="form-control col-md-3" name="searchType" id="searchType">
-					 		<option value=""  ${cri.searchType eq ''?'selected':''}>검색구분</option>
-							<option value="i" ${cri.searchType eq 'i'?'selected':''} >아이디</option>
-							<option value="n" ${cri.searchType eq 'n'?'selected':''} >이 름</option>
-							<option value="p" ${cri.searchType eq 'p'?'selected':''} >전화번호</option>
-							<option value="e" ${cri.searchType eq 'e'?'selected':''} >이메일</option>					 									
+					 		<option value=""  ${cri.searchType eq '' ? 'selected':''}>검색구분</option>
+							<option value="i"  ${cri.searchType eq 'i' ? 'selected':''}>아이디</option>
+							<option value="n"  ${cri.searchType eq 'n' ? 'selected':''}>이 름</option>
+							<option value="p"  ${cri.searchType eq 'p' ? 'selected':''}>전화번호</option>
+							<option value="e"  ${cri.searchType eq 'e' ? 'selected':''}>이메일</option>				 									
 						</select>
 						<!-- keyword -->
    					 	<input  class="form-control" type="text" name="keyword" 
@@ -91,18 +91,18 @@
 		     
 		        		<c:if test="${empty memberList }" >
 		            		<tr>
-		            			<td colspan="6" class="text-center">
+		            			<td colspan="7" class="text-center">
 		            				해당내용이 없습니다.
 		            			</td>
 		            		</tr>
 		            	</c:if>
 		            	<c:if test="${!empty memberList }" >
 		            		<c:forEach items="${memberList }" var="member">
-		            			  <tr  onclick="OpenWindow('detail.do?from=list&id=${member.id}','','800','900');" 
+		            			  <tr  onclick="OpenWindow('detail.do?id=${member.id}','','800','900');" 
 		            		  	   style="cursor:pointer;">
-		            		  	    <td style="padding:5px;">
-		            		  	    	<span class="manPicture" data-id="${member.id }" style="display:block; width:40px; height:40px; margin:0 auto;"></span>
-		            		  	    </td>
+		            		  	   	<td style="padding:3px;">
+		            		  	   		<span class="manPicture" data-id="${member.id }" style="display:block;width:40px;height:40px;margin:0 auto;"></span>
+		            		  	   	</td>
 		            		  	   	<td>${member.id }</td>
 				              		<td>${member.pwd }</td>
 				              		<td>${member.name }
@@ -131,7 +131,6 @@
   		MemberPictureThumb('<%=request.getContextPath()%>');
   	}
   </script>
-  
 
 </body>
 

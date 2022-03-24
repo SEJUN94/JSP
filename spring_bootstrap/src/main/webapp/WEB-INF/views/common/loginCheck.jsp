@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <script>
@@ -6,7 +7,7 @@
 	if(window.opener){
 		window.close();
 		window.opener.parent.location.href="<%=request.getContextPath()%>/";
-	}else {
+	}else{
 		window.parent.location.href="<%=request.getContextPath()%>/";
 	}
 </script>

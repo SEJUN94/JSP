@@ -57,18 +57,19 @@ public class PdsController {
 	@RequestMapping(value = "/regist", method = RequestMethod.POST,produces = "text/plain;charset=utf-8")
 	public String regist(PdsRegistCommand registReq,HttpServletRequest request,
 						 RedirectAttributes rttr) throws Exception {
-		String url = "redirect:/pds/list.do";
+		String url = "redirect:/pds/list.do";		
 		
 		//file 저장 -> List<AttachVO>
-		String savePath = this.fileUploadPath;
+		String savePath = this.fileUploadPath;		
 		List<AttachVO> attachList = GetAttachesByMultipartFileAdapter.save(registReq.getUploadFile(), savePath);
 
-		//DB
-		PdsVO pds = registReq.toPdsVO();
+		//DB 
+		PdsVO pds = registReq.toPdsVO();						
 		pds.setAttachList(attachList);
-		pds.setTitle((String)request.getAttribute("XSStitle"));
+		pds.setTitle((String)request.getAttribute("XSStitle"));	
 		service.regist(pds);
 		
+		//output
 		rttr.addFlashAttribute("from", "regist");
 		return url;
 	}
@@ -85,13 +86,14 @@ public class PdsController {
 		} else {
 			pds = service.getPds(pno);
 		}
-
+		
 		// 파일명 재정의
-		if(pds != null) {
+		if (pds != null) {
 			List<AttachVO> attachList = pds.getAttachList();
-			if(attachList != null) {
-				for(AttachVO attach : attachList) {
+			if (attachList != null) {
+				for (AttachVO attach : attachList) {
 					String fileName = attach.getFileName().split("\\$\\$")[1];
+					attach.setFileName(fileName);
 				}
 			}
 		}
@@ -108,6 +110,16 @@ public class PdsController {
 
 		PdsVO pds = service.getPds(pno);
 		
+		// 파일명 재정의
+		if (pds != null) {
+			List<AttachVO> attachList = pds.getAttachList();
+			if (attachList != null) {
+				for (AttachVO attach : attachList) {
+					String fileName = attach.getFileName().split("\\$\\$")[1];
+					attach.setFileName(fileName);
+				}
+			}
+		}
 
 		mnv.addObject("pds", pds);
 		mnv.setViewName(url);
@@ -123,28 +135,30 @@ public class PdsController {
 		String url = "redirect:/pds/detail.do";
 		
 		// 파일 삭제
-		if(modifyReq.getDeleteFile() != null && modifyReq.getDeleteFile().length > 0) {
+		if (modifyReq.getDeleteFile() != null && modifyReq.getDeleteFile().length > 0) {
 			for (String anoStr : modifyReq.getDeleteFile()) {
 				int ano = Integer.parseInt(anoStr);
 				AttachVO attach = service.getAttachByAno(ano);
 				
 				File deleteFile = new File(attach.getUploadPath(), attach.getFileName());
 				
-				if(deleteFile.exists()) {
+				if (deleteFile.exists()) {
 					deleteFile.delete(); // File 삭제
 				}
-				service.removeAttachByAno(ano);
+				service.removeAttachByAno(ano); // DB 삭제
+				
 			}
 		}
 		
+		
 		// 파일 저장
-		List<AttachVO> attachList
+		List<AttachVO> attachList 
 		= GetAttachesByMultipartFileAdapter.save(modifyReq.getUploadFile(), fileUploadPath);
 		
-		// PdsVO setting
-		PdsVO pds = modifyReq.toPdsVO();
+		// PdsVO settting
+		PdsVO pds = modifyReq.toPdsVO();		
 		pds.setAttachList(attachList);
-		pds.setTitle(HTMLInputFilter.htmlSpecialChars(pds.getTitle()));
+		pds.setTitle(HTMLInputFilter.htmlSpecialChars(pds.getTitle()));		
 		
 		// DB 저장
 		service.modify(pds);
@@ -160,10 +174,10 @@ public class PdsController {
 		
 		// 첨부파일 삭제
 		List<AttachVO> attachList = service.getPds(pno).getAttachList();
-		if(attachList != null) {
-			for(AttachVO attach : attachList) {
+		if (attachList != null) {
+			for (AttachVO attach : attachList) {
 				File target = new File(attach.getUploadPath(), attach.getFileName());
-				if(target.exists()) {
+				if (target.exists()) {
 					target.delete();
 				}
 			}

@@ -62,7 +62,7 @@
 							<div class="form-group">
 								<label for="content">내 용</label>
 								<textarea class="textarea" name="content" id="content" rows="20"
-									placeholder="1000자 내외로 작성하세요." style="width:100%"></textarea>
+									cols="90" placeholder="1000자 내외로 작성하세요." ></textarea>
 							</div>
 						</form>
 					</div><!--end card-body  -->
@@ -74,34 +74,39 @@
 		</div><!-- end row -->
     </section>
     <!-- /.content -->
-    
-    <script>
-    	window.onload=function(){
-    		$('textarea[name="content"]')
-    	}
-    </script>
-    
-	<script>
-    window.onload=function(){
-    	summernote_go($('textarea[name="content"]'),'<%=request.getContextPath()%>');
-    }
-	</script>
-    
-    
-	<script>
+   
+   <script>
+   	window.onload=function(){
+		summernote_go($('textarea[name="content"]'),'<%=request.getContextPath()%>');	
+   	}   	
+   	
+   </script>
+   
+   <script>
+
 		function regist_go(){
-			//alert("regist btn click");
 			var form = document.registForm;
-			if(form.title.value == ""){
-				alert('제목을 입력하세요.');
+			if(form.title.value==""){
+				alert("제목은 필수입니다.");
 				return;
 			}
-			if(form.content.value ==""){
-				alert('내용을 입력하세요.');
-				return;
-			}
+			
 			form.submit();
 		}
-   </script>
+    </script>
+    
     
  </body>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

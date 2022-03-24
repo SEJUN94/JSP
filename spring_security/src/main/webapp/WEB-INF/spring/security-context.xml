@@ -31,9 +31,9 @@
 
 <!-- 인허가 -->
 <http use-expressions="true" pattern="/**" authentication-manager-ref="test">	
-
-	<access-denied-handler error-page="/security/accessDenied"/>
 	
+	<access-denied-handler error-page="/security/accessDenied"/>
+
 	<intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')"/>
 	<intercept-url pattern="/manager/**" access="hasAuthority('ROLE_MANAGER')"/>
 	<intercept-url pattern="/member/**" access="hasAuthority('ROLE_USER')"/>
@@ -48,21 +48,22 @@
 			     authentication-success-handler-ref="loginSuccessHandler"
 			     authentication-failure-handler-ref="loginFailureHandler"
 	/>
-	<logout invalidate-session="true"
+	<logout	invalidate-session="true"
+				
 	/>
 			
 </http>	
 
 
 <beans:bean id="loginSuccessHandler"
-			class="com.spring.security.LoginSuccessHandler"
-			p:defaultTargetUrl="/"
-			p:memberService-ref="memberService"
-			/>
-			
+				class="com.spring.security.LoginSuccessHandler"
+				p:defaultTargetUrl="/"
+				p:memberService-ref="memberService"
+				/>
+
 <beans:bean id="loginFailureHandler"
-			class="com.spring.security.LoginFailureHandler"
-			/>
+			    class="com.spring.security.LoginFailureHandler"
+			    />	
 
 </beans:beans>
 

@@ -19,26 +19,30 @@
 		<li><a href="<c:url value='/home/main' />" >/home/main</a></li>	
 		</sec:authorize>
 		
-		<sec:authorize access="hasAuthority('ROLE_USER')">
+		<sec:authorize access="hasAuthority('ROLE_USER')">	
 		<li><a href="<c:url value='/member/main' />">/member/main</a></li>
 		</sec:authorize>
 		
-		<sec:authorize access="hasAuthority('ROLE_MANAGER')">
+		<sec:authorize access="hasAuthority('ROLE_MANAGER')">		
 		<li><a href="<c:url value='/manager/main' />">/manager/main</a></li>
 		</sec:authorize>
 		
 		<sec:authorize access="hasAuthority('ROLE_ADMIN')">		
 		<li><a href="<c:url value='/admin/main' />">/admin/main</a></li>
-		</sec:authorize>
-	</ul>	
+		</sec:authorize>				
+	</ul>
 	
+	<!-- spring security 3.xxx 이하만 가능   -->
+	<!-- <a href="/security/spring_security_login">로그인</a> -->
 	<sec:authorize access="!isAuthenticated()">
-	<a href="/security/commons/login">로그인</a><br/>
+	<a href="/security/commons/login">로그인</a>
 	</sec:authorize>
-	
+		
+	<!-- <a href="/security/j_spring_security_logout">로그아웃</a> -->
 	<sec:authorize access="isAuthenticated()">
 	<a href="/security/commons/logout">로그아웃</a>
 	</sec:authorize>
+
 </body>
 </html>
 
