@@ -6,7 +6,7 @@
 <%-- <jsp:include page="./header.jsp" /> --%>
 <!-- 변수공유 불가능 페이지 따로 만들어서 붙임-->
 <style>
-	body{background:yellow;}
+	body{background:skyblue;}
 </style>
 main.jsp <br/>
 header.jsp : message : ${message }
